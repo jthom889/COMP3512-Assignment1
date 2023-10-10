@@ -1,7 +1,7 @@
 <?php
-require_once('config.inc.php');
-include('helpers.inc.php');
-include('db-classes.inc.php');
+require_once('./includes/config.inc.php');
+include('./includes/helpers.inc.php');
+include('./includes/db-classes.inc.php');
 
 
 try{
@@ -9,14 +9,30 @@ try{
 
     $songGateway = new SongDB($conn);
 
-    if(isset($_GET['song_id'])){
-        $song = $songGateway -> generateSong('song_id');
-    } else{
-        echo "No song found";
+    $row = $songGateway -> generateSong(1001);
+    if ($row) {
+        echo "<h1>{$row['title']}</h1>";
+        echo "<p>Artist: {$row['artist_name']}</p>";
+        echo "<p>Artist Type: {$row['artist_type_id']}</p>";
+        echo "<p>Genre: {$row['genre_name']}</p>";
+        echo "<p>Year: {$row['year']}</p>";
+        echo "<p>Duration: {$row['duration']} seconds</p>";
+        echo "<p>BPM: {$row['bpm']}</p>";
+        echo "<p>Energy: {$row['energy']}</p>";
+        echo "<p>Danceability: {$row['danceability']}</p>";
+        echo "<p>Liveness: {$row['liveness']}</p>";
+        echo "<p>Valence: {$row['valence']}</p>";
+        echo "<p>Acousticness: {$row['acousticness']}</p>";
+        echo "<p>Speechiness: {$row['speechiness']}</p>";
+        echo "<p>Popularity: {$row['popularity']}</p>";
+    } else {
+        echo "<p>Song not found.</p>";
     }
-    
-} catch (Exception $e){
-    die ($e -> getMessage());
+
+    // Close the database connection
+    $db = null;
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
 
 

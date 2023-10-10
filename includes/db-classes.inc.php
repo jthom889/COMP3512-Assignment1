@@ -38,10 +38,13 @@ class DatabaseHelper{
 
 class SongDB{
 
-    private static $baseSQL = "SELECT title, artist_name as name, artist_type as type, genre_name as genre, year, SEC_TO_TIME(duration) as duration,
-    bpm, energy, danceability, loudness, liveness, valence, duration, acousticness, speechiness, popularity,
-    songs.artist_type_id, songs.genre_id, song_id 
-    FROM songs";
+    private static $baseSQL = "SELECT s.title, s.year, s.duration, s.bpm, s.energy, s.danceability, s.liveness, s.valence, s.acousticness, s.speechiness, s.popularity,
+    a.artist_name, a.artist_type_id,
+    g.genre_name
+    FROM songs AS s
+    JOIN artists AS a ON s.artist_id = a.artist_id
+    JOIN genres AS g ON s.genre_id = g.genre_id
+    WHERE s.song_id = :song_id";
 
 
     public function __construct($connection) {
@@ -49,7 +52,13 @@ class SongDB{
     }
 
     function generateSong($songID){
-        $sql = self::$baseSQL . "WHERE song_id = $songID";
+        $sql = "SELECT s.title, s.year, s.duration, s.bpm, s.energy, s.danceability, s.liveness, s.valence, s.acousticness, s.speechiness, s.popularity,
+        a.artist_name, a.artist_type_id,
+        g.genre_name
+        FROM songs AS s
+        JOIN artists AS a ON s.artist_id = a.artist_id
+        JOIN genres AS g ON s.genre_id = g.genre_id
+        WHERE s.song_id = :songID";
         $results = DatabaseHelper::runQuery($this->pdo, $sql,null);
         return $results -> fetchAll();
     }
