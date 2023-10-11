@@ -1,5 +1,26 @@
 <?php
-include('./includes/helpers.inc.php')
+require_once('./includes/config.inc.php');
+include('./includes/helpers.inc.php');
+require_once('./includes/db-classes.inc.php');
+
+
+try{
+    $conn = DatabaseHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
+    $songGateway = new SongDB($conn);
+
+
+    $artistGateway = new ArtistDB($conn);
+    $artists = $artistGateway -> getAll();
+
+    $genreGateway = new GenreDB($conn);
+    $genres = $genreGateway -> getAll();
+    
+
+
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
 
 
 ?>
@@ -23,38 +44,49 @@ include('./includes/helpers.inc.php')
         <form action="browse.php" method="GET">
             <label for="title">
                 <input type="radio" name="search_type" value="title"> Title
-                <input type="text" name="title" id="title">
+               <?php echo "<input type='text' name='title' id='song_id'>"; ?>
             </label>
             <br>
             <label for="artist">
                 <input type="radio" name="search_type" value="artist"> Artist
                 <select name="artist" id="artist">
-                    <option value="artist1">Artist 1</option>
-                    <option value="artist2">Artist 2</option>
-                    <option value="artist3">Artist 3</option>
+                    <option value='0'>Select Artist</option>
+                    <?php 
+                    
+                        foreach($artists as $artist){
+                        $selected = ($_GET['artist_name'] == $artist['artist_id']) ? 'selected' : '';
+                        echo "<option value='{$artist['artist_id']}' $selected>{$artist['artist_name']}</option>";
+
+                        }  
+                    
+                    ?>
                 </select>
             </label>
 
             <label for="genre">
                 <input type="radio" name="search_type" value="genre"> Genre
                 <select name="genre" id="genre">
-                    <option value="genre1">Genre 1</option>
-                    <option value="genre2">Genre 2</option>
-                    <option value="genre3">Genre 3</option>
+                    <option value="0">Select Genre</option>
+                    <?php 
+                    
+                        foreach($genres as $genre){
+                        $selected = ($_GET['genre_name'] == $genre['genre_id']) ? 'selected' : '';
+                        echo "<option value='{$genre['genre_id']}' $selected>{$genre['genre_name']}</option>";
+
+                        }  
+                
+                    ?>
+                    
                 </select>
             </label>
             <br>
             <label for="year">
                 <input type="radio" name="search_type" value="year"> Year
-                <input type="text" name="year" id="year">
+                <?php 
+                echo "<input type='text' name='year_greater' placeholder='Greater than'>";
+                echo "<input type='text' name='year_less' placeholder='Less than'>";
+                ?>
             </label>
-
-            <label for="year_range">
-                <input type="radio" name="search_type" value="year_range"> Year Range
-                <input type="text" name="year_less" placeholder="Less than">
-                <input type="text" name="year_greater" placeholder="Greater than">
-            </label>
-
             <input type="submit" value="Search">
         </form>
     </div>

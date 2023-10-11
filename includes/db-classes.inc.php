@@ -114,6 +114,41 @@ class SongDB{
 
 }
 
+class ArtistDB{
+
+    private static $baseSQL = "SELECT * FROM artists ORDER BY artist_name";
+
+    public function __construct($connection) {
+        $this->pdo = $connection;
+    }
+
+    public function getAll(){
+        $sql = self::$baseSQL;
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+        return $statement->fetchAll();
+    }
+
+
+
+}
+
+class GenreDB{
+
+    private static $baseSQL = "SELECT * FROM genres ORDER BY genre_name";
+
+    public function __construct($connection) {
+        $this->pdo = $connection;
+    }
+
+    public function getAll(){
+        $sql = self::$baseSQL;
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+        return $statement->fetchAll();
+    }
+
+
+}
+
 
 
 
