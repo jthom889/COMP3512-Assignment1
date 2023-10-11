@@ -10,21 +10,7 @@ try{
     $songGateway = new SongDB($conn);
 
     if( isset($_GET['song_id']) ){
-        $song = $songGateway->generateSong(1001);
-        echo "<h1>{$song['title']}</h1>";
-        echo "<p>Artist: {$song['artist_name']}</p>";
-        echo "<p>Artist Type: {$song['artist_type_id']}</p>";
-        echo "<p>Genre: {$song['genre_name']}</p>";
-        echo "<p>Year: {$song['year']}</p>";
-        echo "<p>Duration: {$song['duration']} seconds</p>";
-        echo "<p>BPM: {$song['bpm']}</p>";
-        echo "<p>Energy: {$song['energy']}</p>";
-        echo "<p>Danceability: {$song['danceability']}</p>";
-        echo "<p>Liveness: {$song['liveness']}</p>";
-        echo "<p>Valence: {$song['valence']}</p>";
-        echo "<p>Acousticness: {$song['acousticness']}</p>";
-        echo "<p>Speechiness: {$song['speechiness']}</p>";
-        echo "<p>Popularity: {$song['popularity']}</p>";
+        $songs = $songGateway->generateSong($_GET['song_id']);
 
     }
 }
@@ -46,6 +32,24 @@ catch (Exception $e){ die($e->getMessage());}
     ?>
 
     <div class="center-box">
+        <?php
+            foreach($songs as $song){
+                echo "<h1>{$song['title']}</h1>";
+                echo "<p>Artist: {$song['artist_name']}</p>";
+                echo "<p>Artist Type: {$song['artist_type_id']}</p>";
+                echo "<p>Genre: {$song['genre_name']}</p>";
+                echo "<p>Year: {$song['year']}</p>";
+                echo "<p>Duration: {$song['duration']} seconds</p>";
+                echo "<p>BPM: {$song['bpm']}</p>";
+                echo "<p>Energy: {$song['energy']}</p>";
+                echo "<p>Danceability: {$song['danceability']}</p>";
+                echo "<p>Liveness: {$song['liveness']}</p>";
+                echo "<p>Valence: {$song['valence']}</p>";
+                echo "<p>Acousticness: {$song['acousticness']}</p>";
+                echo "<p>Speechiness: {$song['speechiness']}</p>";
+                echo "<p>Popularity: {$song['popularity']}</p>";
+            }
+        ?>
     </div>
 
     <section></section>

@@ -64,7 +64,7 @@ class SongDB{
         JOIN genres AS g ON s.genre_id = g.genre_id
         WHERE s.song_id =?";
     
-        $results = DatabaseHelper::runQuery($this->pdo, $sql, array($songID));
+        $results = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID));
         return $results -> fetchAll();
     }
 
