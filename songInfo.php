@@ -43,7 +43,7 @@ try{
 <head>
     <meta charset="utf-8">
     <title>COMP 3512 Assign1</title>
-    <link rel="stylesheet" href="songinfo.css" />
+    <link rel="stylesheet" href="css/songinfo.css" />
 
     
 

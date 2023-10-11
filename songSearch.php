@@ -9,8 +9,8 @@ include('./includes/helpers.inc.php')
 <head>
     <meta charset="utf-8">
     <title>Song Information</title>
-    <link rel="stylesheet" href="songSearch.css" />
-    <link rel="stylesheet" href="songinfo.css" />
+    <link rel="stylesheet" href="css/songSearch.css" />
+    <link rel="stylesheet" href="css/songinfo.css" />
 </head>
 <body>
     <?php

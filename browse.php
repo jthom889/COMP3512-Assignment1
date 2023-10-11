@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <title>Browse</title>
     <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="songinfo.css" />
+    
 </head>
 <body>
     <?php
