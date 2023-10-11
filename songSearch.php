@@ -20,7 +20,7 @@ include('./includes/helpers.inc.php')
     ?>
     <div class="form-container">
         <h2>Search Songs</h2>
-        <form action="songInfo.php" method="post">
+        <form action="browse.php" method="GET">
             <label for="title">
                 <input type="radio" name="search_type" value="title"> Title
                 <input type="text" name="title" id="title">
