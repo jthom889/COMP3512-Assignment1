@@ -63,7 +63,49 @@ class SongDB{
         return $results -> fetchAll();
     }
 
+    function getAll(){
+        $sql = self::$baseSQL;
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+        return $statement->fetchAll();
+    }
 
+    function getAllSongs(){
+        $sql = self::$baseSQL . "ORDER by s.title";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+        return $statement->fetchAll();
+    }
+
+    function getSongsByTitle($title){
+        $sql = self::$baseSQL . "WHERE s.title LIKE ? ORDER BY s.title";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array('%' . $title . '%'));
+        return $statement->fetchAll();
+    }
+
+    function getSongsByArtist($artist_name){
+        $sql = self::$baseSQL . "WHERE a.artist_name =? ORDER BY s.title";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artist_name));
+        return $statement->fetchAll();
+    }
+
+    function getSongsByGenre($genre_name){
+        $sql = self::$baseSQL . "WHERE g.genre_name =? ORDER BY title";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genre_name));
+        return $statement->fetchAll();
+    }
+
+    function getSongsByBefore($year){
+        $sql = self::$baseSQL . "WHERE s.year <? ORDER BY year";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($year));
+        return $statement->fetchAll();
+    }
+
+    function getSongsByAfterYear($year){
+        $sql = self::$baseSQL . "WHERE s.year >? ORDER BY year";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($year));
+        return $statement->fetchAll();
+    }
+
+    
 
 }
 
