@@ -10,7 +10,7 @@ function generateHeader(){
                 <a href='homePage.php'>Home</a>
                 <a href='browse.php'>Browse</a>
                 <a href='songSearch.php'>Search</a>
-                <a href='favourites.php'>Favourites</a>
+                <a href='favorites.php'>Favorites</a>
                 <a href='aboutUs.php'>About Us</a>
             </div>
         </div>

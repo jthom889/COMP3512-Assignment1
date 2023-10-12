@@ -1,0 +1,21 @@
+<?php
+    session_start();
+
+    if( isset($_GET['song_id']) ){
+        
+        $favorites = $_SESSION["Favorites"];
+        unset($favorites[array_search($_GET["song_id"], $favorites)]);
+        $_SESSION["Favorites"] = $favorites;
+    } else{
+        
+        $_SESSION["Favorites"] = [];
+    }
+
+    if( isset($_GET["name"]) && isset($_GET[$_GET["name"]]) )
+        $queryS = "name=" . $_GET['name'] . "&" . $_GET['name'] . "=" . $_GET[$_GET['name']];
+    else
+        $queryS = "";
+
+    
+    header("Location: favorites.php?$queryS");
+?>
