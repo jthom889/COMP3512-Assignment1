@@ -41,7 +41,9 @@ catch (Exception $e){ die($e->getMessage());}
                 echo "<p>Artist Type: {$song['artist_type_id']}</p>";
                 echo "<p>Genre: {$song['genre_name']}</p>";
                 echo "<p>Year: {$song['year']}</p>";
-                echo "<p>Duration: {$song['duration']} seconds</p>";
+                echo "<p>Duration: "; 
+                    toMin($song['duration']);
+                echo " minutes</p>";
                 echo "<p>BPM: {$song['bpm']}</p>";
                 echo "<p>Energy: {$song['energy']}</p>";
                 echo "<p>Danceability: {$song['danceability']}</p>";
@@ -52,7 +54,7 @@ catch (Exception $e){ die($e->getMessage());}
                 echo "<p>Popularity: {$song['popularity']}</p>";
             }
         } else {
-            echo "Jonh";
+            echo "No song found";
         }
         ?>
     </div>

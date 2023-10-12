@@ -51,15 +51,15 @@ try{
                 <input type="radio" name="search_type" value="artist"> Artist
                 <select name="artist" id="artist">
                     <option value='0'>Select Artist</option>
-                    <?php 
-                    
-                        foreach($artists as $artist){
-                        $selected = ($_GET['artist_name'] == $artist['artist_id']) ? 'selected' : '';
-                        echo "<option value='{$artist['artist_id']}' $selected>{$artist['artist_name']}</option>";
+                        <?php 
+                        
+                            foreach($artists as $artist){
+                            $selected = ($_GET['artist_name'] == $artist['artist_id']) ? 'selected' : '';
+                            echo "<option value='{$artist['artist_id']}' $selected>{$artist['artist_name']}</option>";
 
-                        }  
-                    
-                    ?>
+                            }  
+                        
+                        ?>
                 </select>
             </label>
 

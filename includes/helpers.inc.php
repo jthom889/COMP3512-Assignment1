@@ -37,5 +37,17 @@ function generateFooter(){
 
 }
 
+function toMin($seconds){
+    $minute = floor($seconds/60);
+    $second = $seconds%60;
+
+    if($second < 10){
+        echo "$minute:0$second";
+        
+    }else{
+        echo "$minute:$second";
+    }
+}
+
 
 ?>
