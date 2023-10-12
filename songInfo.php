@@ -8,11 +8,11 @@ require_once('./includes/db-classes.inc.php');
 try{
     $conn = DatabaseHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
     $songGateway = new SongDB($conn);
-
+    
     if( isset($_GET['song_id']) ){
         $songs = $songGateway->generateSong($_GET['song_id']);
 
-    }
+    } 
 }
 catch (Exception $e){ die($e->getMessage());}   
 
@@ -33,6 +33,8 @@ catch (Exception $e){ die($e->getMessage());}
 
     <div class="center-box">
         <?php
+
+        if(isset($_GET['song_id'])){
             foreach($songs as $song){
                 echo "<h1>{$song['title']}</h1>";
                 echo "<p>Artist: {$song['artist_name']}</p>";
@@ -49,6 +51,9 @@ catch (Exception $e){ die($e->getMessage());}
                 echo "<p>Speechiness: {$song['speechiness']}</p>";
                 echo "<p>Popularity: {$song['popularity']}</p>";
             }
+        } else {
+            echo "Jonh";
+        }
         ?>
     </div>
 

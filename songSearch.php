@@ -43,7 +43,7 @@ try{
         <h2>Search Songs</h2>
         <form action="browse.php" method="GET">
             <label for="title">
-                <input type="radio" name="search_type" value="title"> Title
+                <input type="radio" name="search_type" value="title" action='selected'> Title
                <?php echo "<input type='text' name='title' id='song_id'>"; ?>
             </label>
             <br>
@@ -83,8 +83,8 @@ try{
             <label for="year">
                 <input type="radio" name="search_type" value="year"> Year
                 <?php 
-                echo "<input type='text' name='year_greater' placeholder='Greater than'>";
-                echo "<input type='text' name='year_less' placeholder='Less than'>";
+                echo "<input type='text' name='year_after' placeholder='After'>";
+                echo "<input type='text' name='year_before' placeholder='Before'>";
                 ?>
             </label>
             <input type="submit" value="Search">
