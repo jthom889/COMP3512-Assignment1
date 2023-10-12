@@ -39,8 +39,7 @@ class DatabaseHelper{
 class SongDB{
 
     private static $baseSQL = "SELECT s.title, s.year, s.duration, s.bpm, s.energy, s.danceability, s.liveness, s.valence, s.acousticness, s.speechiness, s.popularity,
-    a.artist_name, a.artist_type_id,
-    g.genre_name
+    a.artist_name s.artist_id, a.artist_type_id, s.genre_id g.genre_name
     FROM songs AS s
     JOIN artists AS a ON s.artist_id = a.artist_id
     JOIN genres AS g ON s.genre_id = g.genre_id
@@ -86,15 +85,15 @@ class SongDB{
         return $statement->fetchAll();
     }
 
-    function getSongsByArtist($artist_name){
-        $sql = self::$baseSQL . "WHERE a.artist_name =? ORDER BY s.title";
-        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artist_name));
+    function getSongsByArtist($artist_id){
+        $sql = self::$baseSQL . "WHERE a.artist_id =? ORDER BY s.title";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artist_id));
         return $statement->fetchAll();
     }
 
-    function getSongsByGenre($genre_name){
-        $sql = self::$baseSQL . "WHERE g.genre_name =? ORDER BY title";
-        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genre_name));
+    function getSongsByGenre($genre_id){
+        $sql = self::$baseSQL . "WHERE g.genre_id =? ORDER BY title";
+        $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genre_id));
         return $statement->fetchAll();
     }
 
@@ -104,7 +103,7 @@ class SongDB{
         return $statement->fetchAll();
     }
 
-    function getSongsByAfterYear($year){
+    function getSongsByAfter($year){
         $sql = self::$baseSQL . "WHERE s.year >? ORDER BY year";
         $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($year));
         return $statement->fetchAll();

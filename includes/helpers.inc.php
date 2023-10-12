@@ -37,6 +37,10 @@ function generateFooter(){
 
 }
 
+function generateSongList(){
+    
+}
+
 function toMin($seconds){
     $minute = floor($seconds/60);
     $second = $seconds%60;

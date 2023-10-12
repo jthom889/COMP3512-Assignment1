@@ -8,19 +8,20 @@
         $songGateway = new SongDB($conn);
 
         if(isset($_GET['title'])){
+            $song = $songGateway->getSongsByTitle($_GET['title']);
 
-        } elseif(isset($_GET['artist_name'])){
 
-        } elseif(isset($_GET['genre_name'])) {
+        } elseif(isset($_GET['artist'])){
+            $song = $songGateway->getSongsByArtist($_GET['artist']);
 
-        } elseif(isset($_GET['year'])){
+        } elseif(isset($_GET['genre'])) {
+            $song = $songGateway->getSongsByGenre($_GET['genre']);
 
-        } elseif(isset($_GET['less']) && isset($_GET['more'])){
+        } elseif(isset($_GET['year_after'])){
+            $song = $songGateway->getSongsByafter($_GET['year_after']);
 
-        } elseif(isset($_GET['less'])){
-
-        } elseif(isset($_GET['more'])){
-            
+        } elseif(isset($_GET['year_before'])){
+            $song = $songGateway->getSongsBybefore($_GET['year_before']);
         }
 
     } catch (PDOException $e) {
@@ -43,6 +44,9 @@
         generateHeader();
         generateFooter();
     ?>
+    <div class="headliner">
+        <h1>Search/Brwose Results</h1>
+    </div>
     
     
 
