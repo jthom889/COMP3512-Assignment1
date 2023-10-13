@@ -46,6 +46,13 @@ class SongDB{
         $this->pdo = $connection;
     }
 
+    public function getMulSongs($songID){
+        //for multiple songs
+        $sql = self::$baseSQL. ' WHERE song_id IN ('.$songID.')';
+        $results = DatabaseHelper::runQuery($this->pdo, $sql, null);
+        return $results -> fetchAll();
+    }
+
     function generateSong($songID){
         $sql=  self::$baseSQL . " WHERE song_id =?";
     

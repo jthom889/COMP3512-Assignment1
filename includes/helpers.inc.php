@@ -68,7 +68,7 @@ function generateSongList($songs){
                 <td><?=$s['artist_name']?></td>
                 <td><?=$s['year']?></td>
                 <td><?=$s['genre_name']?></td>
-                <td><a href='addToFavorites.php?song_id=<?=$s['song_id']?>'><button class='button'>Add</button></a></td>
+                <td><a href='favorites.php?add=<?=$s['song_id']?>'><button class='button'>Add</button></a></td>
                 <td><a href='songinfo.php?song_id=<?=$s['song_id']?>' class='button'><button>View</button></a></td>
 
         <?php }
@@ -113,12 +113,20 @@ function outputCatagories($catagories){
     echo "</ul>";
 }
 
-// function outputFav($songs){
-    
-    
-//     }       
-                    
-// }
+function getFavouriteSongIDs(){
+    //returns a string of song ids fit for sql
+    $string = "";
+
+    if($_SESSION['favorites'] == 0){
+        return $string; //return nothing if there no favourites
+    }
+
+    foreach($_SESSION['favorites'] as $id){
+        $string .= $id.",";
+    }
+
+    return substr($string,0,-1);//remove the last comma for mysql format
+}
 
 
 

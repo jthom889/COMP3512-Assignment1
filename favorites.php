@@ -1,20 +1,61 @@
 <?php
-session_start();
 require_once('./includes/config.inc.php');
 require_once('./includes/helpers.inc.php');
 require_once('./includes/db-classes.inc.php');
 
-
-try{
-    $conn = DatabaseHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
-    $songGateway = new SongDB($conn);
+session_start();
+        if(isset($_GET['add'])){
+            if(!isset($_SESSION['favorites'])){
+                $_SESSION['favorites'] = [];
+            }
     
-    if( isset($_GET['song_id']) ){
-        $songs = $songGateway->generateSong($_GET['song_id']);
+            $favourites = $_SESSION['favorites'];
+            $favourites[$_GET['add']] = $_GET['add']; 
+            $_SESSION['favorites'] = $favourites;
+            header("location: favorites.php"); 
+        }   
 
-    } 
-}
-catch (Exception $e){ die($e->getMessage());}   
+        if(isset($_GET['remove'])){
+            if(!isset($_SESSION['favorites'])){
+                return;  
+            }
+    
+            if($_GET['remove'] == 'all'){
+                
+                $_SESSION['favorites'] = [];
+                header("location: favorites.php");
+                return;
+            }
+    
+            $favourites = $_SESSION['favorites'];
+            unset($favourites[$_GET['remove']]); 
+            $_SESSION['favorites'] = $favourites;
+            
+            header("location: favorites.php");
+        }
+
+        try{
+            $conn = DatabaseHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
+            $songGate = new SongDB($conn);
+            
+            $data = array();
+            if(isset($_SESSION['favorites'])){
+                $fav = getFavouriteSongIDs();
+                if($fav == ""){
+                    $data = array();
+                }
+                else if(substr_count($fav,",")>=1){
+                    $data = $songGate -> getMulSongs($fav);
+                }else{
+                    $data = $songGate -> generateSong($fav);
+                }
+            }
+    
+            $pdo = null;
+        }catch (Exception $e){
+            die($e ->getMessage());
+        }  
+
 
 ?>
 
@@ -50,7 +91,7 @@ catch (Exception $e){ die($e->getMessage());}
                     <th>Genre</th>
                     <th>Popularity</th>
                     <th>
-                        <?php echo "<a href='removeFavorites.php?RemAll=yes'><button class='rmAll'>Remove All</button></a>"; ?>
+                        <?php echo "<a href='favorites.php?remove=all'><button class='rmAll'>Remove All</button></a>"; ?>
                     </th>
                     <th>View</th>
                 </tr>
@@ -58,8 +99,8 @@ catch (Exception $e){ die($e->getMessage());}
                 
                 
 
-                if(isset($_GET['song_id'])){
-                    foreach($songs as $s){
+               
+                    foreach($data as $s){
                         
                             echo "<tr>
                                     <td>{$s['title']}</td>
@@ -67,12 +108,13 @@ catch (Exception $e){ die($e->getMessage());}
                                     <td><?={$s['year']}</td>
                                     <td><?={$s['genre_name']}</td>
                                     <td><?={$s['popularity']}</td>
-                                    <td><a href='removeFavorites.php?song_id={$s['song_id']}'><button class='rm'>remove</button></a></td>
+                                    <td><a href='favorites.php?remove={$s['song_id']}'><button class='rm'>remove</button></a></td>
                                     <td><a href='songInfo.php?song_id={$s['song_id']}'><button class='vw'>view</button></a></td>
-                                 </tr>"; }
+                                 </tr>"; 
+                    }
 
                     
-            }
+            
 
                 
                  
