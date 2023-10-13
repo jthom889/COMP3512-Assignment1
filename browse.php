@@ -1,31 +1,36 @@
 <?php
-    require_once('./includes/config.inc.php');
-    include('./includes/helpers.inc.php');
-    include('./includes/db-classes.inc.php');
+    require_once 'includes/config.inc.php';
+    require_once 'includes/helpers.inc.php';
+    require_once 'includes/db-classes.inc.php';
 
     try{
-        $conn = DatabaseHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
+        $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
         $songGateway = new SongDB($conn);
+        $artistGateway = new ArtistDB($conn);
+        $genreGateway = new GenreDB($conn);
 
-        if(isset($_GET['title'])){
-            $song = $songGateway->getSongsByTitle($_GET['title']);
+        if(!empty($_GET['title'])){
+            $songs = $songGateway->getSongsByTitle($_GET['title']);
 
+        } elseif(!empty($_GET['artist']) && $_GET['artist'] > 0){
+            $artist = $artistGateway->getArtist($_GET['artist']);
+            $songs = $songGateway->getSongsByArtist($artist[0]['artist_name']);
 
-        } elseif(isset($_GET['artist'])){
-            $song = $songGateway->getSongsByArtist($_GET['artist']);
+        } elseif(!empty($_GET['genre']) && $_GET['genre'] > 0) {
+            $genre = $genreGateway->getGenre($_GET['genre']);
+            $songs = $songGateway->getSongsByGenre($genre[0]['genre_name']);
 
-        } elseif(isset($_GET['genre'])) {
-            $song = $songGateway->getSongsByGenre($_GET['genre']);
+        } elseif(!empty($_GET['year_after'])){
+            $songs = $songGateway->getSongsByafter($_GET['year_after']);
 
-        } elseif(isset($_GET['year_after'])){
-            $song = $songGateway->getSongsByafter($_GET['year_after']);
-
-        } elseif(isset($_GET['year_before'])){
-            $song = $songGateway->getSongsBybefore($_GET['year_before']);
+        } elseif(!empty($_GET['year_before'])){
+            $songs = $songGateway->getSongsBybefore($_GET['year_before']);
+        } else{
+            $songs = $songGateway->getAllSongs();
         }
 
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        die($e->getMessage());
     }
     
 
@@ -42,12 +47,21 @@
 <body>
     <?php
         generateHeader();
-        generateFooter();
+       
     ?>
-    <div class="headliner">
-        <h1>Search/Brwose Results</h1>
+    <div class="headline">
+        <h1>Search/Browse Results</h1>
     </div>
-    
+    <section>
+        <?php  
+            generateSongList($songs); 
+        ?>
+    </section>
+    <footer>
+       <?php generateFooter(); ?>
+    </footer>
+     
     
 
 </body>
+</html>

@@ -10,7 +10,7 @@ function generateHeader(){
                 <a href='homePage.php'>Home</a>
                 <a href='browse.php'>Browse</a>
                 <a href='songSearch.php'>Search</a>
-                <a href='favorites.php'>Favorites</a>
+                <a href='favorites.php'>Favourites</a>
                 <a href='aboutUs.php'>About Us</a>
             </div>
         </div>
@@ -37,8 +37,30 @@ function generateFooter(){
 
 }
 
-function generateSongList(){
+function generateSongList($songs){
     
+    echo "<table>";
+        echo "<tr>";
+        echo "<th>Title</th>";
+        echo "<th>Artist</th>";
+        echo "<th>Year</th>";
+        echo "<th>Genre</th>";
+        echo "<th></th>";
+        echo "<th></th>";
+        echo "</tr>";
+
+        foreach($songs as $s){ ?>
+            <tr>
+                <td class='title'><a href='songinfo.php?song_id=<?=$s['song_id']?>'><?=$s['title']?></a></td>
+                <td><?=$s['artist_name']?></td>
+                <td><?=$s['year']?></td>
+                <td><?=$s['genre_name']?></td>
+                <td><a href='favorites.php?song_id=<?=$s['song_id']?>' ><button class='button'>Add</button></a></td>
+                <td><a href='songinfo.php?song_id=<?=$s['song_id']?>' class='button'><button>View</button></a></td>
+
+        <?php }
+        echo "</table>";
+
 }
 
 function toMin($seconds){
