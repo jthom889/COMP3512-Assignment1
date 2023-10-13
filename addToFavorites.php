@@ -10,5 +10,4 @@ header("Location: favorites.php?s={$_GET['song_id']}");
 exit();
 
 
-
 ?>

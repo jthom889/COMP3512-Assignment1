@@ -28,15 +28,12 @@ catch (Exception $e){ die($e->getMessage());}
     <link rel="stylesheet" href="css/favorites.css" />
 </head>
 <body>
-    
-    <header>
+
         <?php
             generateHeader();
             generateFooter();
 
         ?>
-    </header>
-
     <section>
 
         
