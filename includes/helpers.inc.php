@@ -68,11 +68,7 @@ function generateSongList($songs){
                 <td><?=$s['artist_name']?></td>
                 <td><?=$s['year']?></td>
                 <td><?=$s['genre_name']?></td>
-<<<<<<< HEAD
                 <td><a href='addToFavorites.php?song_id=<?=$s['song_id']?>'><button class='button'>Add</button></a></td>
-=======
-                <td><a href='addToFavorites.php?song_id=<?=$s['song_id']?>&name=<?=$name?>&<?=$name?>=<?=$search?>'><button class='button'>Add</button></a></td>
->>>>>>> 1c4ba4278fdb4d1511eeda1d67bdfcab7df3f519
                 <td><a href='songinfo.php?song_id=<?=$s['song_id']?>' class='button'><button>View</button></a></td>
 
         <?php }
