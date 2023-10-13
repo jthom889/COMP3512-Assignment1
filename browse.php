@@ -1,6 +1,6 @@
 <?php
     require_once 'includes/config.inc.php';
-    require_once 'includes/helpers.inc.php';
+    include 'includes/helpers.inc.php';
     require_once 'includes/db-classes.inc.php';
 
     try{
@@ -42,12 +42,13 @@
     <meta charset="utf-8">
     <title>Browse</title>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     
 </head>
 <body>
     <?php
         generateHeader();
-       
+        generateFooter();
     ?>
     <div class="headline">
         <h1>Search/Browse Results</h1>
@@ -55,13 +56,12 @@
     <section>
         <?php  
             generateSongList($songs); 
-            generateFooter(); 
+             
         ?>
     </section>
-       
+        
     
     
-     
     
 
 </body>
