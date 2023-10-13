@@ -47,13 +47,7 @@ class SongDB{
     }
 
     function generateSong($songID){
-        $sql=  "SELECT s.title, s.year, s.duration, s.bpm, s.energy, s.danceability, s.liveness, s.valence, s.acousticness, s.speechiness, s.popularity,
-        a.artist_name, a.artist_type_id,
-        g.genre_name
-        FROM songs AS s
-        JOIN artists AS a ON s.artist_id = a.artist_id
-        JOIN genres AS g ON s.genre_id = g.genre_id
-        WHERE s.song_id =?";
+        $sql=  self::$baseSQL . " WHERE song_id =?";
     
         $results = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID));
         return $results -> fetchAll();

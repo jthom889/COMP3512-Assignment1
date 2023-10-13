@@ -33,15 +33,12 @@ session_start();
     <link rel="stylesheet" href="css/favorites.css" />
 </head>
 <body>
-    
-    <header>
+
         <?php
             generateHeader();
             generateFooter();
 
         ?>
-    </header>
-
     <section>
 
         

@@ -28,5 +28,4 @@ if(!array_search($_GET["song_id"], $favorites)){
 
 
 
-
 ?>

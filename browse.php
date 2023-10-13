@@ -56,20 +56,15 @@
 <body>
     <?php
         generateHeader();
-        
+        generateFooter(); 
     ?>
     <div class="headline">
         <h1>Search/Browse Results</h1>
     </div>
     <section>
         <?php  
-<<<<<<< HEAD
             generateSongList($songs, $name, $search); 
-             
-=======
-            generateSongList($songs); 
-            generateFooter();
->>>>>>> f5ca9e456d44dbd05ab72bb4676739f12cf01cc3
+            
         ?>
     </section>
         
