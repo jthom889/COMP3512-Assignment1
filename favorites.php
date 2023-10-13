@@ -28,7 +28,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <title>COMP 3512 Assign1</title>
-    <link rel="stylesheet" href="css/songinfo.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/favorites.css" />
 </head>
 <body>

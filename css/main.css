@@ -42,23 +42,33 @@
 }
 
 .lfoot{
-    font-size: smaller;
-    position: absolute;
-    bottom: 0px;
-    left: 25px;
+    font-size: 25px;
+    float: left;
+    
 }
 
 .rfoot{
     font-size: smaller;
-    position: absolute;
-    bottom: 0px;
-    right: 25px;
+    float: right;
+    
 }
 
 .cfoot{
 
     font-size: smaller;
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
+    display: inline-block;
+
 }
+
+.foot{
+    
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height: 90px;
+    background-color: #D0DAEE;
+    
+    
+}
+

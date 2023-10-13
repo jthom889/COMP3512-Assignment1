@@ -31,7 +31,7 @@ try{
     <meta charset="utf-8">
     <title>Song Information</title>
     <link rel="stylesheet" href="css/songSearch.css" />
-    <link rel="stylesheet" href="css/songinfo.css" />
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
     <?php

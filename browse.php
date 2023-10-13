@@ -55,11 +55,12 @@
     <section>
         <?php  
             generateSongList($songs); 
+            generateFooter(); 
         ?>
     </section>
-    <footer>
-       <?php generateFooter(); ?>
-    </footer>
+       
+    
+    
      
     
 

@@ -24,6 +24,7 @@ catch (Exception $e){ die($e->getMessage());}
     <meta charset="utf-8">
     <title>COMP 3512 Assign1</title>
     <link rel="stylesheet" href="css/songinfo.css" />
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 <body> 
     <?php
@@ -58,9 +59,7 @@ catch (Exception $e){ die($e->getMessage());}
         }
         ?>
     </div>
-
-    <section></section>
-    <footer></footer>
+    
 
 </body>
 </html>
