@@ -75,5 +75,30 @@ function toMin($seconds){
     }
 }
 
+function outputSongs($songs){
+
+    echo "<ul>";
+    foreach($songs as $s){ ?>
+
+        <li><span>
+            <a href="songinfo.php?song_id=<?=$s['song_id']?>">
+                <?=$s['title']?>
+            </a> by <?=$s['artist_name']?>
+        </li>
+        <br>
+
+    <?php }
+    echo "</ul>";
+}
+
+function outputCatagories($catagories){
+
+    echo "<ul>";
+    foreach($catagories as $c) 
+        echo "<li><span>" . $c['name'] . "</span> with " . $c['num'] . " songs</li><br>";
+        
+    echo "</ul>";
+}
+
 
 ?>
