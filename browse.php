@@ -63,7 +63,7 @@
     </div>
     <section>
         <?php  
-            generateSongList($songs); 
+            generateSongList($songs, $name, $search); 
              
         ?>
     </section>

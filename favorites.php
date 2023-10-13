@@ -68,7 +68,7 @@ session_start();
 
                 
                 foreach($favorites as $fav){
-                    outputFav($songsGateway->generateSong($fav_id), $str);
+                    outputFav($songsGateway->generateSong($fav), $queryS);
                 }
 
                 echo "</table>";
