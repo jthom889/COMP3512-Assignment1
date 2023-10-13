@@ -22,6 +22,7 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
 <?php
