@@ -20,21 +20,19 @@ function generateHeader(){
 
 function generateFooter(){
 
-    echo "
+    echo 
     
-    
-        <div class='foot'>
-            <div class='lfoot'>
+        '<div class="footer">
+            <div class="footer-left">
                 <p> Jonah Thompson  &  Ethan Koop </p>   
             </div>
-            <div class='cfoot'>
+            <div class="footer-centre">
                 <p> COMP-3512 </p>
             </div>
-            <div class='rfoot'>
-                <p>  Repo:  <a href='https://github.com/jthom889/COMP3512-Assignment1.git'>https://github.com/jthom889/COMP3512-Assignment1.git</a></p>
+            <div class="footer-right">
+                <p>  Repo:  <a href="https://github.com/jthom889/COMP3512-Assignment1.git">https://github.com/jthom889/COMP3512-Assignment1.git</a></p>
             </div>
-        </div>
-    ";
+        </div>';
 
 }
 

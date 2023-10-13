@@ -29,6 +29,7 @@ session_start();
     <meta charset="utf-8">
     <title>COMP 3512 Assign1</title>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/favorites.css" />
 </head>
 <body>

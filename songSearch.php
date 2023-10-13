@@ -32,6 +32,7 @@ try{
     <title>Song Information</title>
     <link rel="stylesheet" href="css/songSearch.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/footer.css" />
 </head>
 <body>
     <?php
