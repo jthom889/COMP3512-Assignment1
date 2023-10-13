@@ -1,24 +1,30 @@
 .footer {
     position: fixed;
-    left: 0;
     bottom: 0;
-    width: 100%;
-    background: #333;
-    color: #fff;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: white;
     text-align: center;
     padding: 10px;
-   
-    vertical-align:middle;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footer-left {
-    float: left;
+    float: 1;
 }
 
 .footer-center {
-    display: inline-block;
+    float: 1;
+    text-align: center;
 }
 
 .footer-right {
-    float: right;
+    float: 1;
+}
+
+.output{
+    margin-bottom: 80px;
 }
