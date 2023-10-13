@@ -2,30 +2,12 @@
 
 session_start();
 
-if(!isset($_SESSION["Favorites"])){
-    $_SESSION["Favorites"] = [];
+if(!empty($_GET["song_id"])){
+    $_SESSION["Song" . $_GET['song_id']] = $_GET["song_id"];
 }
 
-$favorites = $_SESSION["Favorites"];
-
-if (isset($_GET["name"])){
-    $queryS = "name=" . $_GET['name'] . "&" . $_GET['name'] . "=" . $_GET[$_GET['name']];
-}else{ 
-    $queryS = "";
-}
-
-
-if(!array_search($_GET["song_id"], $favorites)){
-    $favourites[] = $_GET["song_id"];
-    $_SESSION["Favorites"] = $favorites;
-
-    header("Location: favorites.php?$queryS");
-} else{
-    $queryM = "Song has already been added to Favorites page";
-    header("Location: favorites.php?$queryM&$queryS");
-}
-
-
+header("Location: favorites.php?s={$_GET['song_id']}");
+exit();
 
 
 

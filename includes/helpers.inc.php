@@ -38,7 +38,7 @@ function generateFooter(){
 
 }
 
-function generateSongList($songs, $name, $search){
+function generateSongList($songs){
     
     echo "<div class='output'><table>";
         echo "<tr>";
@@ -56,7 +56,7 @@ function generateSongList($songs, $name, $search){
                 <td><?=$s['artist_name']?></td>
                 <td><?=$s['year']?></td>
                 <td><?=$s['genre_name']?></td>
-                <td><a href='addToFavorites.php?song_id=<?=$s['song_id']?>&name=<?=$name?>&<?=$name?>=<?=$search?>' ><button class='button'>Add</button></a></td>
+                <td><a href='addToFavorites.php?song_id=<?=$s['song_id']?>'><button class='button'>Add</button></a></td>
                 <td><a href='songinfo.php?song_id=<?=$s['song_id']?>' class='button'><button>View</button></a></td>
 
         <?php }
@@ -101,22 +101,12 @@ function outputCatagories($catagories){
     echo "</ul>";
 }
 
-function outputFav($fav, $search){
+// function outputFav($songs){
     
-    foreach($fav as $f){             
-                        
-    echo "<tr>
-            <td>{$fav['title']}</td>
-            <td><?={$fav['artist_name']}</td>
-            <td><?={$fav['year']}</td>
-            <td><?={$fav['genre_name']}</td>
-            <td><?={$fav['popularity']}</td>
-            <td><a href='removeFavorites.php?song_id={$fav['song_id']}&$search'><button class='rm'>remove</button></a></td>
-            <td><a href='single-song.php?id={$fav['song_id']}'><button class='vw'>view</button></a></td>
-         </tr>";
-    }       
+    
+//     }       
                     
-}
+// }
 
 
 

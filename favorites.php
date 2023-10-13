@@ -1,25 +1,20 @@
 <?php
+session_start();
 require_once('./includes/config.inc.php');
 require_once('./includes/helpers.inc.php');
 require_once('./includes/db-classes.inc.php');
 
-session_start();
 
-    if( !isset($_SESSION["Favorites"]) ){
-        $_SESSION["Favorites"] = [];
-    }
-
-    $favorites = $_SESSION["Favorites"];
-
-    $conn = DatabaseHelper::createConnection( array(DBCONNSTRING, DBUSER, DBPASS) );
-    $songsGateway = new SongDB($conn);
-
+try{
+    $conn = DatabaseHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
+    $songGateway = new SongDB($conn);
     
-    if( !empty($_GET["name"]) && !empty($_GET[$_GET["name"]]) ){
-    $queryS = "name=" . $_GET['name'] . "&" . $_GET['name'] . "=" . $_GET[$_GET['name']];
-    }else{
-    $queryS = "";
-    }
+    if( isset($_GET['song_id']) ){
+        $songs = $songGateway->generateSong($_GET['song_id']);
+
+    } 
+}
+catch (Exception $e){ die($e->getMessage());}   
 
 ?>
 
@@ -47,7 +42,9 @@ session_start();
         
 
         <div class="table-container">
-        <?php echo "<a href='browse.php?$queryS'><button class='return'>Return to Browse Results</button></a>"; ?>
+        <?php echo "<a href='browse.php'><button class='return'>Return to Browse Results</button></a>"; 
+
+        ?>
             <table>
                 <tr>
                     <th>Song</th>
@@ -56,22 +53,31 @@ session_start();
                     <th>Genre</th>
                     <th>Popularity</th>
                     <th>
-                        <?php echo "<a href='removeFavorites.php?$queryS'><button class='rmAll'>Remove All</button></a>"; ?>
+                        <?php echo "<a href='removeFavorites.php?RemAll=yes'><button class='rmAll'>Remove All</button></a>"; ?>
                     </th>
                     <th>View</th>
                 </tr>
                 <?php
                 
-                if( !empty($_GET["text"]) ){
-                    echo $_GET["text"]; 
-                }
+                
+
+                if(isset($_GET['song_id'])){
+                    foreach($songs as $s){
+                        
+                            echo "<tr>
+                                    <td>{$s['title']}</td>
+                                    <td><?={$s['artist_name']}</td>
+                                    <td><?={$s['year']}</td>
+                                    <td><?={$s['genre_name']}</td>
+                                    <td><?={$s['popularity']}</td>
+                                    <td><a href='removeFavorites.php?song_id={$s['song_id']}'><button class='rm'>remove</button></a></td>
+                                    <td><a href='songInfo.php?song_id={$s['song_id']}'><button class='vw'>view</button></a></td>
+                                 </tr>"; }
+
+                    
+            }
 
                 
-                foreach($favorites as $fav){
-                    outputFav($songsGateway->generateSong($fav), $queryS);
-                }
-
-                echo "</table>";
                  
                     
                 ?>
