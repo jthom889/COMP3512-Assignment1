@@ -22,23 +22,25 @@ function generateFooter(){
 
     echo 
     
-        '<div class="footer">
+        '<footer>
+        <div class="footer">
             <div class="footer-left">
-                <p> Jonah Thompson  &  Ethan Koop </p>   
+                <p>Jonah Thompson  &  Ethan Koop</p>   
             </div>
             <div class="footer-centre">
-                <p> COMP-3512 </p>
+                <p>COMP-3512</p>
             </div>
             <div class="footer-right">
-                <p>  Repo:  <a href="https://github.com/jthom889/COMP3512-Assignment1.git">https://github.com/jthom889/COMP3512-Assignment1.git</a></p>
+                <p>Repo:  <a href="https://github.com/jthom889/COMP3512-Assignment1.git">https://github.com/jthom889/COMP3512-Assignment1.git</a></p>
             </div>
-        </div>';
+        </div>
+        <?footer>';
 
 }
 
 function generateSongList($songs){
     
-    echo "<table>";
+    echo "<div class='output'><table>";
         echo "<tr>";
         echo "<th>Title</th>";
         echo "<th>Artist</th>";
@@ -58,7 +60,7 @@ function generateSongList($songs){
                 <td><a href='songinfo.php?song_id=<?=$s['song_id']?>' class='button'><button>View</button></a></td>
 
         <?php }
-        echo "</table>";
+        echo "</table></div>";
 
 }
 

@@ -48,7 +48,7 @@
 <body>
     <?php
         generateHeader();
-        generateFooter();
+        
     ?>
     <div class="headline">
         <h1>Search/Browse Results</h1>
@@ -56,7 +56,7 @@
     <section>
         <?php  
             generateSongList($songs); 
-             
+            generateFooter();
         ?>
     </section>
         
