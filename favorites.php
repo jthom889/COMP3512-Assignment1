@@ -1,6 +1,6 @@
 <?php
 require_once('./includes/config.inc.php');
-include('./includes/helpers.inc.php');
+require_once('./includes/helpers.inc.php');
 require_once('./includes/db-classes.inc.php');
 
 session_start();
@@ -14,12 +14,12 @@ session_start();
     $conn = DatabaseHelper::createConnection( array(DBCONNSTRING, DBUSER, DBPASS) );
     $songsGateway = new SongDB($conn);
 
-    // creates a query string containing the filtered search results
-    if( isset($_GET["name"]) && isset($_GET[$_GET["name"]]) )
-        $queryS = "name=" . $_GET['name'] . "&" . $_GET['name'] . "=" . $_GET[$_GET['name']];
-    else
-        $queryS = " ";
-
+    
+    if( !empty($_GET["name"]) && !empty($_GET[$_GET["name"]]) ){
+    $queryS = "name=" . $_GET['name'] . "&" . $_GET['name'] . "=" . $_GET[$_GET['name']];
+    }else{
+    $queryS = "";
+    }
 
 ?>
 
@@ -61,21 +61,18 @@ session_start();
                     <th>View</th>
                 </tr>
                 <?php
+                
+                if( !empty($_GET["text"]) ){
+                    echo $_GET["text"]; 
+                }
 
-                foreach($favorites as $favSong)
-                    foreach($favSong as $fav){
-                        
-                            echo "<tr>
-                                    <td>{$fav['title']}</td>
-                                    <td><?={$fav['artist_name']}</td>
-                                    <td><?={$fav['year']}</td>
-                                    <td><?={$fav['genre_name']}</td>
-                                    <td><?={$fav['popularity']}</td>
-                                    <td><a href='remove-favorites.php?id={$fav['song_id']}'><button class='rm'>remove</button></a></td>
-                                    <td><a href='single-song.php?id={$fav['song_id']}'><button class='vw'>view</button></a></td>
-                                </tr>";
-                        
-                    }   
+                
+                foreach($favorites as $fav){
+                    outputFav($songsGateway->generateSong($fav_id), $str);
+                }
+
+                echo "</table>";
+                 
                     
                 ?>
 
