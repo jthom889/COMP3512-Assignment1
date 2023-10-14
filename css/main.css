@@ -7,7 +7,7 @@
 .dropdown-img {
     
     position: absolute;
-    top: 40px;
+    top: 50px;
     right: 35px;
     background: url('../images/dropdown-menu-icon-16.jpg') no-repeat;
     background-size: 50px 50px;
@@ -59,10 +59,11 @@
 
 header{
     margin-bottom: 30px;
-    padding: 10px;
+    padding: 5px;
 }
 
 body {
+    /*used image: https://www.pexels.com/photo/black-vinyl-record-21148/*/
     background: url('../images/background.jpg') no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -70,5 +71,9 @@ body {
 
 section{
     margin-bottom: 80px;
+}
+
+h1{
+    font-size: 40px;
 }
 

@@ -23,7 +23,7 @@
         } elseif(!empty($_GET['genre']) && $_GET['genre'] > 0) {
             $genre = $genreGateway->getGenre($_GET['genre']);
             $songs = $songGateway->getSongsByGenre($genre[0]['genre_name']);
-            $text = "Displaying songs with " . $genre[0]['genre_name'] . " as its Genre";
+            $text = "Displaying songs in the " . $genre[0]['genre_name'] . " genre";
            
         } elseif(!empty($_GET['year_after'])){
             $songs = $songGateway->getSongsByafter($_GET['year_after']);
@@ -35,6 +35,7 @@
 
         } else{
             $songs = $songGateway->getAllSongs();
+            $text = "Showing all songs";
         }
 
         
@@ -66,14 +67,13 @@
     <div class="headline">
         <h1>Search/Browse Results</h1>
     </div>
-    <div class="msg"><?php $text ?></div>
+    
     <section>
         <div class="table-container">
-            
-        <?php  
-            generateSongList($songs); 
-             
-        ?>
+            <div class="msg"><?php echo $text ?></div>
+            <?php  
+                generateSongList($songs); 
+            ?>
         </div>
     </section>
         

@@ -4,16 +4,16 @@
     left: 0;
     right: 0;
     background-color:rgb(122, 214, 122);
-    color: white;
     text-align: center;
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    
 }
 
 .footer-left {
     float: 1;
+    text-align: left;
 }
 
 .footer-center {
@@ -23,5 +23,6 @@
 
 .footer-right {
     float: 1;
+    text-align: right;
 }
 

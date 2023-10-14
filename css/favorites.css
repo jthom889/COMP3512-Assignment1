@@ -13,12 +13,13 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 50px;
+    border-radius: 5px;
 }
 
 th, td {
     border: none;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 td{
@@ -26,7 +27,7 @@ td{
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #a6ecb8; 
 }
 
 .rmAll {

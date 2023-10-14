@@ -78,6 +78,9 @@ session_start();
 
         ?>
     <section>
+        <div class="headline">
+            <h1>Favourites</h1>
+        </div>
         <div class="table-container">
             
         <?php echo "<a href='browse.php'><button class='return'>Return to Browse Results</button></a>"; 
