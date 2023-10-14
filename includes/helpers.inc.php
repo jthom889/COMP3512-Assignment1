@@ -3,17 +3,20 @@
 function generateHeader(){
     echo 
     
-"<header>
-    <div class='dropdown-container'>
-        <div class='dropdown-img'></div>
-            <div class='dropdown-content'>
-                <a href='homePage.php'>Home</a>
-                <a href='browse.php'>Browse</a>
-                <a href='songSearch.php'>Search</a>
-                <a href='favorites.php'>Favourites</a>
-                <a href='aboutUs.php'>About Us</a>
+"<header class=header>
+    <div class='head'>
+        <div class='title'><h1>COMP-3512 Assignment 1</h1></div>    
+        <div class='dropdown-container'>
+            <div class='dropdown-img'></div>
+                <div class='dropdown-content'>
+                    <a href='homePage.php'>Home</a>
+                    <a href='browse.php'>Browse</a>
+                    <a href='songSearch.php'>Search</a>
+                    <a href='favorites.php'>Favourites</a>
+                    <a href='aboutUs.php'>About Us</a>
+                </div>
             </div>
-        </div>
+        </div>    
     </div>
 </header>";
 }

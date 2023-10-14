@@ -20,6 +20,11 @@ require_once('./includes/db-classes.inc.php');
         generateHeader();
         generateFooter();
     ?> 
+    <section>
+
+
+    
+    </section>
 
 </body>
 </html>
