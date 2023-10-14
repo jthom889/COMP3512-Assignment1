@@ -40,6 +40,7 @@ try{
     generateFooter();
 
     ?>
+    <section>
     <div class="form-container">
         <h2>Search Songs</h2>
         <form action="browse.php" method="GET">
@@ -91,6 +92,7 @@ try{
             <input type="submit" value="Search">
         </form>
     </div>
+</section>
 </body>
 </html>
 
