@@ -34,7 +34,7 @@ function generateFooter(){
                 <p>COMP-3512</p>
             </div>
             <div class="footer-right">
-                <p>Repo:  <a href="https://github.com/jthom889/COMP3512-Assignment1.git">https://github.com/jthom889/COMP3512-Assignment1.git</a></p>
+                <p><a href="https://github.com/jthom889/COMP3512-Assignment1.git">Git Repo</a></p>
             </div>
         </div>
         <?footer>';
