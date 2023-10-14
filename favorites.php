@@ -78,9 +78,6 @@ session_start();
 
         ?>
     <section>
-
-        
-
         <div class="table-container">
         <?php echo "<a href='browse.php'><button class='return'>Return to Browse Results</button></a>"; 
 
@@ -97,10 +94,8 @@ session_start();
                     <th>View</th>
                 </tr>
                 <?php
-                
-                
 
-                
+
                     foreach($data as $s){
                         
 
@@ -115,18 +110,7 @@ session_start();
                                  </tr>"; 
                     }
 
-                
-            
-
-                
-                 
-                    
                 ?>
-
-
-
-
-
 
             </table>
 
