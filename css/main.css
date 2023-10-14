@@ -31,7 +31,7 @@
     padding: 10px;
     text-decoration: none;
     display: block;
-    
+
 }
 
 .dropdown-content a:hover {
@@ -62,7 +62,9 @@ header{
 }
 
 body {
-    background-color: rgb(134, 134, 134);
+    background: url('../images/background.jpg') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 section{
