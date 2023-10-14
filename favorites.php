@@ -99,10 +99,10 @@ session_start();
                         
                             echo "<tr>
                                     <td>{$s['title']}</td>
-                                    <td><?={$s['artist_name']}</td>
-                                    <td><?={$s['year']}</td>
-                                    <td><?={$s['genre_name']}</td>
-                                    <td><?={$s['popularity']}</td>
+                                    <td>{$s['artist_name']}</td>
+                                    <td>{$s['year']}</td>
+                                    <td>{$s['genre_name']}</td>
+                                    <td>{$s['popularity']}</td>
                                     <td><a href='favorites.php?remove={$s['song_id']}'><button class='rm'>remove</button></a></td>
                                     <td><a href='songInfo.php?song_id={$s['song_id']}'><button class='vw'>view</button></a></td>
                                  </tr>"; 
