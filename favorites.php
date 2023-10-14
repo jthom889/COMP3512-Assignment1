@@ -76,9 +76,6 @@ session_start();
 
         ?>
     <section>
-
-        
-
         <div class="table-container">
         <?php echo "<a href='browse.php'><button class='return'>Return to Browse Results</button></a>"; 
 
@@ -96,10 +93,7 @@ session_start();
                     <th>View</th>
                 </tr>
                 <?php
-                
-                
 
-               
                     foreach($data as $s){
                         
                             echo "<tr>
@@ -112,19 +106,8 @@ session_start();
                                     <td><a href='songInfo.php?song_id={$s['song_id']}'><button class='vw'>view</button></a></td>
                                  </tr>"; 
                     }
-
-                    
-            
-
-                
-                 
-                    
+   
                 ?>
-
-
-
-
-
 
             </table>
 
