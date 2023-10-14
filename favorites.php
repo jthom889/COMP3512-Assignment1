@@ -79,6 +79,7 @@ session_start();
         ?>
     <section>
         <div class="table-container">
+            
         <?php echo "<a href='browse.php'><button class='return'>Return to Browse Results</button></a>"; 
 
         ?>
