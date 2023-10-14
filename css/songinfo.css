@@ -3,16 +3,30 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+   
     height: 100vh;
     margin: 0;
 }
 
 .center-box {
-    background: #f0f0f0;
+    background-color:rgb(122, 214, 122);
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     text-align: center;
+    width: 500px;
+}
+
+h2{
+    font-weight: bolder;
+    font-size: 35px;
+    background-color: rgb(90, 211, 90);
+}
+
+h3{
+    font-weight: bolder;
+    font-size: 20px;
+    background-color: rgb(90, 211, 90);
 }
 
 

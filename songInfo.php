@@ -39,22 +39,23 @@ catch (Exception $e){ die($e->getMessage());}
 
             if(isset($_GET['song_id'])){
                 foreach($songs as $song){
-                    echo "<h1>{$song['title']}</h1>";
-                    echo "<p>Artist: {$song['artist_name']}</p>";
-                    echo "<p>Artist Type: {$song['artist_type_id']}</p>";
-                    echo "<p>Genre: {$song['genre_name']}</p>";
-                    echo "<p>Year: {$song['year']}</p>";
-                    echo "<p>Duration: "; 
+                    echo "<h2>{$song['title']}</h1>";
+                    echo "<p><strong>Artist:</strong> {$song['artist_name']}</p>";
+                    echo "<p><strong>Artist Type:</strong> {$song['artist_type_id']}</p>";
+                    echo "<p><strong>Genre:</strong> {$song['genre_name']}</p>";
+                    echo "<p><strong>Year:</strong> {$song['year']}</p>";
+                    echo "<h3>Special Categories</h3>";
+                    echo "<p><strong>Duration:</strong> "; 
                         toMin($song['duration']);
                     echo " minutes</p>";
-                    echo "<p>BPM: {$song['bpm']}</p>";
-                    echo "<p>Energy: {$song['energy']}</p>";
-                    echo "<p>Danceability: {$song['danceability']}</p>";
-                    echo "<p>Liveness: {$song['liveness']}</p>";
-                    echo "<p>Valence: {$song['valence']}</p>";
-                    echo "<p>Acousticness: {$song['acousticness']}</p>";
-                    echo "<p>Speechiness: {$song['speechiness']}</p>";
-                    echo "<p>Popularity: {$song['popularity']}</p>";
+                    echo "<p><strong>BPM:</strong> {$song['bpm']}</p>";
+                    echo "<p><strong>Energy:</strong> {$song['energy']}</p>";
+                    echo "<p><strong>Danceability:</strong> {$song['danceability']}</p>";
+                    echo "<p><strong>Liveness:</strong> {$song['liveness']}</p>";
+                    echo "<p><strong>Valence:</strong> {$song['valence']}</p>";
+                    echo "<p><strong>Acousticness:</strong> {$song['acousticness']}</p>";
+                    echo "<p><strong>Speechiness:</strong> {$song['speechiness']}</p>";
+                    echo "<p><strong>Popularity:</strong> {$song['popularity']}</p>";
                 }
             } else {
                 echo "No song found";
