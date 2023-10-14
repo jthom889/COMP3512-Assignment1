@@ -36,20 +36,21 @@ session_start();
 
         try{
             $conn = DatabaseHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
-            $songGate = new SongDB($conn);
+            $songGateway = new SongDB($conn);
             
             $data = array();
             if(isset($_SESSION['favorites'])){
-                $fav = getFavouriteSongIDs();
+                $fav = getFavs();
                 if($fav == ""){
                     $data = array();
                 }
                 else if(substr_count($fav,",")>=1){
-                    $data = $songGate -> getMulSongs($fav);
+                    $data = $songGateway -> getMulSongs($fav);
                 }else{
-                    $data = $songGate -> generateSong($fav);
+                    $data = $songGateway -> generateSong($fav);
                 }
             }
+           
     
             $pdo = null;
         }catch (Exception $e){
@@ -90,7 +91,6 @@ session_start();
                     <th>Artist</th>
                     <th>Year</th>
                     <th>Genre</th>
-                    <th>Popularity</th>
                     <th>
                         <?php echo "<a href='favorites.php?remove=all'><button class='rmAll'>Remove All</button></a>"; ?>
                     </th>
@@ -100,21 +100,22 @@ session_start();
                 
                 
 
-               
+                
                     foreach($data as $s){
+                        
+
                         
                             echo "<tr>
                                     <td>{$s['title']}</td>
-                                    <td><?={$s['artist_name']}</td>
-                                    <td><?={$s['year']}</td>
-                                    <td><?={$s['genre_name']}</td>
-                                    <td><?={$s['popularity']}</td>
-                                    <td><a href='favorites.php?remove={$s['song_id']}'><button class='rm'>remove</button></a></td>
-                                    <td><a href='songInfo.php?song_id={$s['song_id']}'><button class='vw'>view</button></a></td>
+                                    <td>{$s['artist_name']}</td>
+                                    <td>{$s['year']}</td>
+                                    <td>{$s['genre_name']}</td>
+                                    <td><a href='favorites.php?remove={$s['song_id']}'><button class='rm'>Remove</button></a></td>
+                                    <td><a href='songInfo.php?song_id={$s['song_id']}'><button class='vw'>View</button></a></td>
                                  </tr>"; 
                     }
 
-                    
+                
             
 
                 

@@ -28,14 +28,6 @@ td{
 th {
     background-color: #f2f2f2;
 }
-.rmSingle{
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 10px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
 .rmAll {
     background-color: #e74c3c;
@@ -44,6 +36,7 @@ th {
     padding: 10px 10px;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .rmAll:hover {
@@ -51,20 +44,32 @@ th {
 }
 
 .vw{
-    background-color: #008015;
-    color: #000000;
+    background-color:rgb(122, 214, 122);
+    font-weight: bold;
+    color: #ffffff;
     border: none;
-    padding: 10px 10px;
+    padding: 7px 10px;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .return{
     
-    background-color: #2faa09;
+    background-color: rgb(122, 214, 122);
+    font-weight: bold;
     color: #fffcfc;
     border: none;
     padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.rm{
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 7px 20px;
     cursor: pointer;
     border-radius: 5px;
 }

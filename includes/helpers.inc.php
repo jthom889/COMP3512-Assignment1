@@ -116,19 +116,19 @@ function outputCatagories($catagories){
     echo "</ul>";
 }
 
-function getFavouriteSongIDs(){
-    //returns a string of song ids fit for sql
+function getFavs(){
+    
     $string = "";
 
     if($_SESSION['favorites'] == 0){
-        return $string; //return nothing if there no favourites
+        return $string; 
     }
 
     foreach($_SESSION['favorites'] as $id){
-        $string .= $id.",";
+        $string .= $id."," ;
     }
 
-    return substr($string,0,-1);//remove the last comma for mysql format
+    return substr($string,0,-1);
 }
 
 
