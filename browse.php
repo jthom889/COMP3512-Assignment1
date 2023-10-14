@@ -51,6 +51,7 @@
     <title>Browse</title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/favorites.css" />
     
 </head>
 <body>
